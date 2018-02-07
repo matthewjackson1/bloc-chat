@@ -25,10 +25,10 @@ class MessageList extends Component {
      });
    }
 
-  const roomMessages = {
+  roomMessages() {
       this.state.messages.map( (message) => {
-      if (message.roomId === this.props.activeRoom) { return <span>message.content</span> } 
-      return null;  
+      if (message.roomId === this.props.activeRoom) { return <span>message.content</span>; } 
+      else { return null; }
       })
   };
 
@@ -38,7 +38,7 @@ class MessageList extends Component {
 
  		return( 
  		<div>
-      {this.roomMessages}
+      {this.roomMessages()}
     </div>
       
  			);
