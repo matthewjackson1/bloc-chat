@@ -38,7 +38,7 @@ class MessageList extends Component {
 
  		return( 
  		<div>
-      {this.roomMessages()}
+      {this.roomMessages}
     </div>
       
  			);
