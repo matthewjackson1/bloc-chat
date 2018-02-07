@@ -26,19 +26,19 @@ class MessageList extends Component {
    }
 
   roomMessages() {
-      this.state.messages.map( (message) => {
-      if (message.roomId === this.props.activeRoom) { return <span>message.content</span>; } 
-      else { return null; }
-      })
-  };
+       let messages = this.state.messages;
+       let activeRoom = this.props.activeRoom;
+       let filteredMessages = messages.filter( message => (message.roomId === activeRoom));
+       let mapFilteredMessages = filteredMessages.map((message, index)=><span key={index}>{message.content}</span>); 
+       return mapFilteredMessages;
+
+  }
 
     
-
  	render() {
-
  		return( 
  		<div>
-      {this.roomMessages()}
+      { this.roomMessages() }
     </div>
       
  			);
