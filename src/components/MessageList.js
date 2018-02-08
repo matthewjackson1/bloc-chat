@@ -53,9 +53,9 @@ class MessageList extends Component {
  	render() {
  		return( 
     <div className="messageContainer">
-    <div className="messagesHeader">
-    <span className="roomName">{this.props.activeRoomName}</span>
-    </div>
+      <div className="messagesHeader">
+      <span className="roomName">{this.props.activeRoomName}</span>
+      </div>
  		<Table striped>
      <tbody>
       { this.roomMessages() }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 import './App.css';
 import * as firebase from 'firebase';
 import {Bootstrap, Grid, Col, Row, Button} from 'react-bootstrap';
@@ -23,13 +24,18 @@ class App extends Component {
     super(props);
     this.state = {
       activeRoom: "",
-      activeRoomName: ""
+      activeRoomName: "",
+      activeUser: ""
     }
   }
 
   setActiveRoom(r) {
     this.setState({ activeRoom : r.key });
     this.setState({ activeRoomName: r.name });
+  }
+
+  setUser(user) {
+    this.setState({ user: user});
   }
 
   render() {
@@ -42,6 +48,11 @@ class App extends Component {
                 activeRoom = {this.state.activeRoom} 
                 activeRoomName = {this.state.activeRoomName} 
                 setActiveRoom = {(r) => this.setActiveRoom(r)}
+            />
+            <User
+                firebase = {firebase}
+                setUser = {(user) => this.setUser(user)}
+                activeUser = {this.state.activeUser}
             />
             </Col>
             <Col sm={9} className="messages">
