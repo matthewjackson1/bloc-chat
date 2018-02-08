@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import {Grid, Row, Button} from 'react-bootstrap';
+import './RoomList.css';
 
 class RoomList extends Component {
    constructor(props) {
@@ -37,21 +38,26 @@ class RoomList extends Component {
     
 
  	render() {
- 		return( 
- 		<div>
-    	<div>
- 			{
- 				this.state.rooms.map(
-          (room) => <span className="roomNames" onClick={() => this.props.setActiveRoom(room)}>{room.name}</span> )
- 			}
-    </div>
+ 		return(
+      <div className="text-left">
+        <span className="blocChatTitle">Bloc Chat</span> 
+        <span className="blocChatRooms">Rooms</span>
+        <div className="chatroomList">
+       			{
+       				this.state.rooms.map(
+                (room) => <span className="roomNames" onClick={() => this.props.setActiveRoom(room)}>{room.name}</span> )
+       			}
+        </div>
     
-    <form onSubmit={this.createRoom}>
-      <label for="roomName">New Room Name</label>
-      <input type="text" id="roomName" onChange={this.handleChange} />
-      <input type="submit" value="Submit" />
-    </form>
-    </div>
+        <form className="newRoomForm" onSubmit={this.createRoom}>
+            <label className="roomEntryLabel" for="roomName">Add a room</label>
+            <input className="roomEntry" type="text" id="roomName" onChange={this.handleChange} />
+            <input className="createRoom" type="submit" value="Create Room"/>
+        </form>
+      </div>
+
+    
+  
  			);
  	}
  };

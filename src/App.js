@@ -3,6 +3,7 @@ import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
 import './App.css';
 import * as firebase from 'firebase';
+import {Bootstrap, Grid, Col, Row, Button} from 'react-bootstrap';
 
 
 // Initialize Firebase
@@ -33,19 +34,25 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-            <RoomList 
+      <Grid className="App" fluid>
+          <Row>
+            <Col sm={3} className="rooms">
+            <RoomList
                 firebase = {firebase}
                 activeRoom = {this.state.activeRoom} 
                 activeRoomName = {this.state.activeRoomName} 
                 setActiveRoom = {(r) => this.setActiveRoom(r)}
             />
+            </Col>
+            <Col sm={9} className="messages">
             <MessageList 
                 firebase = {firebase} 
                 activeRoom = {this.state.activeRoom}
                 activeRoomName = {this.state.activeRoomName}
             />
-      </div>
+            </Col>
+          </Row>
+      </Grid>
     );
   }
 }
