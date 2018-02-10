@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {Grid, Row, Button} from 'react-bootstrap';
+import {} from 'react-bootstrap';
 import './RoomList.css';
 
 class RoomList extends Component {
    constructor(props) {
      super(props);
- 
+  
      this.state = { 
      	rooms: [],
       newRoomName : ""
@@ -50,7 +50,7 @@ class RoomList extends Component {
         </div>
     
         <form className="newRoomForm" onSubmit={this.createRoom}>
-            <label className="roomEntryLabel" for="roomName">Add a room</label>
+            <label className="roomEntryLabel" htmlFor="roomName">Add a room</label>
             <input className="roomEntry" type="text" id="roomName" onChange={this.handleChange} />
             <input className="createRoom" type="submit" value="Create Room"/>
         </form>

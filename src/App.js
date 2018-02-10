@@ -4,7 +4,7 @@ import MessageList from './components/MessageList';
 import User from './components/User';
 import './App.css';
 import * as firebase from 'firebase';
-import {Bootstrap, Grid, Col, Row, Button} from 'react-bootstrap';
+import {Grid, Col, Row} from 'react-bootstrap';
 
 
 // Initialize Firebase
@@ -35,12 +35,25 @@ class App extends Component {
   }
 
   setUser(user) {
-    this.setState({ user: user});
+    if (user !== null) {
+      console.log("setUser"+user.displayName);  
+      this.setState({ activeUser: user.displayName});
+    }
+    else {
+      this.setState({ activeUser: null});
+    }
   }
 
   render() {
     return (
       <Grid className="App" fluid>
+          <Row>
+            <User
+                firebase = {firebase}
+                setUser = {(user) => this.setUser(user)}
+                activeUser = {this.state.activeUser}
+            />
+          </Row>
           <Row>
             <Col sm={3} className="rooms">
             <RoomList
@@ -48,11 +61,6 @@ class App extends Component {
                 activeRoom = {this.state.activeRoom} 
                 activeRoomName = {this.state.activeRoomName} 
                 setActiveRoom = {(r) => this.setActiveRoom(r)}
-            />
-            <User
-                firebase = {firebase}
-                setUser = {(user) => this.setUser(user)}
-                activeUser = {this.state.activeUser}
             />
             </Col>
             <Col sm={9} className="messages">
