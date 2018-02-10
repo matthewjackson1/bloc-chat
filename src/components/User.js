@@ -66,7 +66,7 @@ class User extends Component {
   		console.log("rendering");
  		return( 
  			<div className="userInfo">
- 			    <span className="username">{this.props.activeUser ? this.props.activeUser : "Viewing as Guest"}</span>
+ 			    <span className="username">{this.props.activeUser ? this.props.activeUser : "Welcome, Guest"}</span>
  			    { !this.props.activeUser ? <Button onClick={this.signIn} classname="signinButton" bsStyle="primary">Sign in</Button> :
  			    <Button onClick={this.signOut} classname="signoutButton" bsStyle="link">Sign out</Button> }
 
