@@ -191,28 +191,46 @@ class MessageList extends Component {
     
  	render() {
  		return( 
-    <div>
-      <div className="messageContainer">
-        <div className="messagesHeader">
-        <span className="roomName">{this.props.activeRoomName}</span>
-        </div>
-   		<Table striped>
-       <tbody>
-        { this.roomMessages() }
-       </tbody>
-      </Table>
+      <div>
+        <div>
+          { this.props.activeRoom &&
+          <div>
+            <div className="messageContainer">
+              <div className="messagesHeader">
+                <span className="roomName">{this.props.activeRoomName}</span>
+              </div>
+           		<Table striped>
+              <tbody>
+                { this.roomMessages() }
+              </tbody>
+              </Table>
+            </div>
+            <form className="newMsgForm" onSubmit={this.createMsg}>
+              <FormGroup bsSize="large">
+                <InputGroup> 
+                  <FormControl className="msgEntry" type="text" id="message" placeholder="Write your message here..." onChange={this.handleChange} />
+                  <InputGroup.Button>
+                    <Button className="msgSubmit" type="submit" bsSize="large">Send</Button>
+                  </InputGroup.Button>
+                </InputGroup>
+              </FormGroup>
+            </form>
+          </div>
+          }
+          </div>
+          <div>
+        { !this.props.activeRoom &&
+          <div>
+            <h1>Welcome to Bloc Chat!</h1>
+            <span> Please select a room on the left to start messaging</span>
+            <div>
+              <span className="ion-person-stalker introIcon"></span>
+            </div>
+          </div>
+        }
       </div>
-      <form className="newMsgForm" onSubmit={this.createMsg}>
-        <FormGroup bsSize="large">
-          <InputGroup> 
-            <FormControl className="msgEntry" type="text" id="message" placeholder="Write your message here..." onChange={this.handleChange} />
-            <InputGroup.Button>
-              <Button className="msgSubmit" type="submit" bsSize="large">Send</Button>
-            </InputGroup.Button>
-          </InputGroup>
-        </FormGroup>
-      </form>
     </div>
+    
  			);
  	}
  };

@@ -23,7 +23,7 @@ class RoomList extends Component {
 
  	componentDidMount() {
      this.roomsRef.on('child_added', snapshot => {
-       console.log("child_added");
+       //console.log("child_added");
        const room = snapshot.val();
        room.key = snapshot.key;
        this.setState({ rooms: this.state.rooms.concat( room ) });
@@ -32,40 +32,22 @@ class RoomList extends Component {
        //console.log("child_removed");
        const room = snapshot.val();
        room.key = snapshot.key;
-       //console.log(JSON.stringify(this.state.rooms));
-       //console.log(room);
-       //console.log(JSON.stringify(this.state.rooms));
        this.setState({ rooms: this.state.rooms.filter( (item) => item.key !== room.key ) });
-       //console.log("Round 2"+JSON.stringify(this.state.rooms));
+
      });
      this.roomsRef.on('child_changed', snapshot => {
        console.log("child_changed");
        //console.log("child_removed");
        const room = snapshot.val();
        room.key = snapshot.key;
-       //console.log("room key and room name" + room.key + room.name);
-       //console.log(this.state.rooms)
        const roomIndex = this.state.rooms.findIndex(obj => obj.key === room.key);
-       //console.log("room index"+roomIndex);
        const roomCopy = this.state.rooms;
-       //console.log(roomCopy[roomIndex]);
        roomCopy[roomIndex].name = room.name;
        const updatedRooms = roomCopy
-       //console.log(this.state.rooms);
        this.setState({ rooms: updatedRooms});
       
      });
 
-     /*this.messagesRef.on('child_removed', snapshot => {
-       //console.log("child_removed");
-       const message = snapshot.val();
-       message.key = snapshot.key;
-       //console.log(JSON.stringify(this.state.rooms));
-       //console.log(room);
-       //console.log(JSON.stringify(this.state.rooms));
-       this.setState({ messages: this.state.messages.filter( (item) => item.key !== message.key ) });
-       //console.log("Round 2"+JSON.stringify(this.state.rooms));
-     });*/
    }
 
   handleChange(e) {
@@ -74,7 +56,10 @@ class RoomList extends Component {
 
   handleEdit(e, room) {
     const editedNames = this.state.editedNames;
+    console.log("target value"+ e.target.value);
     editedNames[room.key] = e.target.value;
+    console.log(editedNames[room.key]);
+
     console.log("editedNames"+editedNames);
     this.setState({editedNames: editedNames});
     console.log(this.state.editedNames);
@@ -87,28 +72,20 @@ class RoomList extends Component {
   }
 
   editRoom = (e, room) => {
-    console.log('editRoom triggered');
+    e.preventDefault();
+    //console.log('editRoom triggered'+e+room.key);
     const selectedRoom = room.key;
-    console.log('selectedRoom'+room.key);
-    //console.log(e.target);
-    //console.log(this.roomsRef.child(selectedRoom));
     const editedName = this.state.editedNames[selectedRoom];
-    console.log("edited name"+this.state.editedName);
     this.roomsRef.child(selectedRoom).update({ name: editedName});
     e.target.reset();
-    e.preventDefault(); 
+    this.toggleEdit(e, room.key);
+     
   }
 
   deleteRoom = (room) => {
   console.log("deleteroom triggered");
   const selectedRoom = room.key;
   this.roomsRef.child(selectedRoom).remove();
-/*  this.state.messages.map( (message) => { 
-    if(message.roomId === selectedRoom) { 
-      this.messagesRef.child(message).remove()
-    }; 
-  });*/
-
   }
 
   toggleEdit = (e, roomKey) => {
@@ -147,7 +124,6 @@ class RoomList extends Component {
                     </Row>
                     </div>
                   }
-
                   { this.state.editClicked[room.key] &&
                     <form onSubmit={(e) => this.editRoom(e, room)}>
                       <FormGroup bsSize="large">
@@ -163,11 +139,11 @@ class RoomList extends Component {
                 
                   </div>
 
-
                 )
-
-                
+       
        			}
+
+
                 <form className="newRoomForm" onSubmit={this.createRoom}>
                     <FormGroup bsSize="large">
                       <InputGroup className="roomEntry"> 
