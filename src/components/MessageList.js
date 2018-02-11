@@ -13,7 +13,8 @@ class MessageList extends Component {
       sentAt: "",
       roomId: "",
       messageContent: null,
-      editedMsg: []
+      editedMsg: [],
+      editClicked: []
       
      };
     
@@ -70,6 +71,15 @@ class MessageList extends Component {
     //console.log(this.state.editedMsg);
   }
 
+  messageControls = (message) => {
+    return  <div className="controls">
+    { this.state.editClicked[message.key] ? 
+      <Button onClick={(e) => this.toggleEdit(e, message.key) }><span className="msgIcons ion-close-circled" /> Cancel</Button> : 
+      <Button onClick={(e) => this.toggleEdit(e, message.key) }><span className="msgIcons ion-edit" /> Edit</Button> }
+    <Button className="delete" onClick={() => this.deleteMessage(message)}><span className="msgIcons ion-trash-a" />Delete</Button>
+    </div>
+  }
+
   editMessage = (e, message) => {
     //console.log(JSON.stringify(message));
     const selectedMsg = message.key;
@@ -78,7 +88,9 @@ class MessageList extends Component {
     //console.log("edited name"+this.state.editedMsg);
     const editedContent = this.state.editedMsg[selectedMsg];
     //console.log(editedContent);
-    
+    const clickStatuses = this.state.editClicked;
+    console.log(clickStatuses);
+    clickStatuses[message.key] = false;
     this.messagesRef.child(selectedMsg).update({
      content: editedContent,
      sentAt:this.timeNow(),
@@ -102,20 +114,29 @@ class MessageList extends Component {
             <span className="sentAt">
               {message.sentAt}
             </span>
+            { !this.state.editClicked[message.key] &&
+            <div>
             <span className="msgContent">
               {message.content}
             </span>
-            <Button onClick={() => this.deleteMessage(message)}>Delete</Button>
-            <form className="editMessage" onSubmit={(e) => this.editMessage(e, message)}>
+            {this.messageControls(message)}
+            </div>
+            }
+            {(this.state.editClicked[message.key]) &&
+            <div>
+            <form onSubmit={(e) => this.editMessage(e, message)}>
               <FormGroup bsSize="large">
-                <InputGroup> 
-                  <FormControl className="msgUpdate" type="text" placeholder="Edit message" onChange={(e)=>this.handleEdit(e,message)}/>
+                <InputGroup className="editControls"> 
+                  <FormControl className="msgUpdate" type="text" defaultValue={message.content} onChange={(e)=>this.handleEdit(e,message)}/>
                   <InputGroup.Button>
                     <Button className="msgSubmit" type="submit" bsSize="large">Update</Button>
                   </InputGroup.Button>
                 </InputGroup>
               </FormGroup>
             </form>
+            {this.messageControls(message)}
+            </div>
+            }
           </td>
         </tr>
         ); 
@@ -154,6 +175,15 @@ class MessageList extends Component {
        });
     e.target.reset();
     e.preventDefault();
+  }
+
+  toggleEdit = (e, messageKey) => {
+    //console.log(messageKey);
+    const clickStatuses = this.state.editClicked;
+    console.log(clickStatuses);
+    clickStatuses[messageKey] = (clickStatuses[messageKey] === true) ? false : true;
+    console.log(clickStatuses);
+    this.setState({editClicked: clickStatuses});
   }
 
   

@@ -12,12 +12,9 @@
 }
 
 .msgContent {
-	display: block;
-}
+	display:block;
+	padding:11px 0 11px 0;}
 
-.msgContent {
-
-}
 
 .sentAt {
 	font-size: 14px;
@@ -27,4 +24,22 @@
 
 .userName {
 	font-weight: bold;
+}
+
+
+.editControls {
+	margin-top:10px;
+}
+
+.msgIcons {
+	margin-right:5px;
+	font-size:14px;
+}
+
+.controls {
+	float:right;
+}
+
+.delete {
+	margin-left:5px;
 }

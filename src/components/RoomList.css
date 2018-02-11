@@ -1,14 +1,23 @@
+.rooms {
+	padding: 10px !important;
+}
+
 .roomNames {
 	display:block;
 	font-size: 18px;
-	padding-top:4px;
-	padding-bottom:4px;
+	padding-top:6px;
+	padding-bottom:6px;
+	padding-left:6px;
 	cursor: pointer;
 
 }
 
 .roomNames:first-child {
-	margin-top:15px;
+
+}
+
+.nameEntry {
+	margin-top:10px;
 }
 
 .blocChatTitle {
@@ -19,24 +28,57 @@
 .blocChatRooms {
 	display:block;
 	font-size: 24px;
-	padding-top:30px;
+	margin-top:24px;
+	margin-bottom:10px;
 
+}
+
+
+
+.showEdit {
+	display:block;
+}
+
+.hideMsg {
+	display:none;
+}
+
+.showMsg {]
+	display:block;
+}
+
+.hideEdit {
+	display:block;
+}
+
+.roomControls {
+	display: block;
+	text-align: right;
+	padding-left:0px;
+}
+
+.roomRow {
+	padding: 5px 0 5px 0;
+}
+
+.roomButtons {
+	padding-left:3px;
+}
+
+.roomMsgIcons {
+	color: #333;
+	font-size:18px;
+	padding-left:0px;
+}
+
+.activeRoomRow {
+	background-color: #d6d6d7;
+}
+
+.roomRow {
+	
 }
 
 .newRoomForm {
-	font-size:18px;
-}
-
-.roomEntryLabel {
-	display:block;
-	margin-top: 20px;
-}
-
-.roomEntry {
-	display:block;
-}
-
-.createRoom {
-	display:block;
-	margin-top:5px;
+	margin-top: 24px;
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button, FormGroup, InputGroup, FormControl} from 'react-bootstrap';
+import {Button, FormGroup, InputGroup, FormControl, Row, Col} from 'react-bootstrap';
 import './RoomList.css';
 
 class RoomList extends Component {
@@ -9,7 +9,8 @@ class RoomList extends Component {
      this.state = { 
      	rooms: [],
       newRoomName : "",
-      editedNames: []
+      editedNames: [],
+      editClicked: []
      };
     
      this.roomsRef = this.props.firebase.database().ref('rooms');
@@ -86,17 +87,17 @@ class RoomList extends Component {
   }
 
   editRoom = (e, room) => {
+    console.log('editRoom triggered');
     const selectedRoom = room.key;
-    console.log(e.target);
-    console.log(this.roomsRef.child(selectedRoom));
+    console.log('selectedRoom'+room.key);
+    //console.log(e.target);
+    //console.log(this.roomsRef.child(selectedRoom));
     const editedName = this.state.editedNames[selectedRoom];
     console.log("edited name"+this.state.editedName);
     this.roomsRef.child(selectedRoom).update({ name: editedName});
     e.target.reset();
-    e.preventDefault();
-    
+    e.preventDefault(); 
   }
-
 
   deleteRoom = (room) => {
   console.log("deleteroom triggered");
@@ -110,9 +111,21 @@ class RoomList extends Component {
 
   }
 
+  toggleEdit = (e, roomKey) => {
+    //console.log(messageKey);
+    const clickStatuses = this.state.editClicked;
+    console.log(clickStatuses);
+    clickStatuses[roomKey] = clickStatuses[roomKey] === true ? false : true;
+    console.log(clickStatuses);
+    this.setState({editClicked: clickStatuses});
+  }
+
+  
+
 
  	render() {
  		return(
+
       <div className="text-left">
         <span className="blocChatTitle">Bloc Chat</span> 
         <span className="blocChatRooms">Rooms</span>
@@ -121,31 +134,54 @@ class RoomList extends Component {
        				this.state.rooms.map(
                 (room) => 
                   <div>
-                  <span className="roomNames" onClick={() => this.props.setActiveRoom(room)}>{room.name}</span>
-                  <Button className="deleteRoom" onClick={() => this.deleteRoom(room)}>Delete</Button>
-                  <form className="editRoom" onSubmit={(e) => this.editRoom(e, room)}>
+                  {  !this.state.editClicked[room.key] && 
+                    <div className={room.key === this.props.activeRoom ? "activeRoomRow" : "inactiveRoomRow"}> 
+                    <Row className="roomRow">   
+                      <Col xs={7}> 
+                      <span className="roomNames" onClick={() => this.props.setActiveRoom(room)}>{room.name}</span>
+                      </Col>
+                      <Col xs={5} className="roomControls"> 
+                         <Button className="roomButtons" bsStyle="link" onClick={(e) => this.toggleEdit(e, room.key) }><span className="roomMsgIcons ion-edit" /></Button>
+                         <Button bsStyle="link" className="roomButtons deleteRoom" onClick={() => this.deleteRoom(room)}><span className="roomMsgIcons ion-trash-a" /></Button>
+                      </Col>
+                    </Row>
+                    </div>
+                  }
+
+                  { this.state.editClicked[room.key] &&
+                    <form onSubmit={(e) => this.editRoom(e, room)}>
+                      <FormGroup bsSize="large">
+                        <InputGroup className="nameEntry"> 
+                          <FormControl type="text" defaultValue={room.name} onChange={(e)=>this.handleEdit(e, room)} />
+                          <InputGroup.Button>
+                            <Button className="nameSubmit" type="submit" bsSize="large">Update</Button>
+                          </InputGroup.Button>
+                        </InputGroup>
+                      </FormGroup>
+                    </form>
+                  }
+                
+                  </div>
+
+
+                )
+
+                
+       			}
+                <form className="newRoomForm" onSubmit={this.createRoom}>
                     <FormGroup bsSize="large">
-                      <InputGroup> 
-                        <FormControl className="nameEntry" type="text" placeholder="Enter new room name..." onChange={(e)=>this.handleEdit(e, room)} />
+                      <InputGroup className="roomEntry"> 
+                        <FormControl className="roomField" type="text" placeholder="" id="roomName" onChange={this.handleChange} />
                         <InputGroup.Button>
-                          <Button className="nameSubmit" type="submit" bsSize="large">Update</Button>
-                        </InputGroup.Button>
+                          <Button className="createRoom" type="submit" bsSize="large" >Add</Button>
+                      </InputGroup.Button>
                       </InputGroup>
                     </FormGroup>
-                  </form>
-                  </div>
-                  )
-       			}
-        </div>
-    
-        <form className="newRoomForm" onSubmit={this.createRoom}>
-            <label className="roomEntryLabel" htmlFor="roomName">Add a room</label>
-            <input className="roomEntry" type="text" id="roomName" onChange={this.handleChange} />
-            <input className="createRoom" type="submit" value="Create Room"/>
-        </form>
+                </form>  
+      
       </div>
 
-    
+    </div>
   
  			);
  	}
