@@ -25,7 +25,8 @@ class App extends Component {
     this.state = {
       activeRoom: "",
       activeRoomName: "",
-      activeUser: ""
+      activeUser: "",
+      messages: []
     }
   }
 
@@ -42,6 +43,10 @@ class App extends Component {
     else {
       this.setState({ activeUser: null});
     }
+  }
+
+  setMessages(messages) {
+    this.setState({messages: messages});
   }
 
   render() {
@@ -61,6 +66,7 @@ class App extends Component {
                 activeRoom = {this.state.activeRoom} 
                 activeRoomName = {this.state.activeRoomName} 
                 setActiveRoom = {(r) => this.setActiveRoom(r)}
+                appMessages = {this.state.messages}
             />
             </Col>
             <Col sm={9} className="messages">
@@ -69,6 +75,8 @@ class App extends Component {
                 activeRoom = {this.state.activeRoom}
                 activeRoomName = {this.state.activeRoomName}
                 activeUser = {this.state.activeUser}
+                appMessages = {this.state.messages}
+                setMessages = {(messages) => this.setMessages(messages)}
             />
             </Col>
           </Row>

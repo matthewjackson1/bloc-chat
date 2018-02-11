@@ -45,20 +45,6 @@ class User extends Component {
 			this.setState({loggedout : false}); 
 		  	});	
 	}
-
-
-    /*getUsername = () => {
-    	console.log("getUsername triggered")
-    	let activeUsername = this.props.activeUser;
-    	console.log("1"+activeUsername);
-    	if (activeUsername !== "") {
-    		console.log("2"+activeUsername);
-    		this.setState({username : activeUsername});
-    	}
-    	else {
-    		this.setState({username : "Guest"});
-    	}
-    }*/
    
 
     
@@ -67,8 +53,8 @@ class User extends Component {
  		return( 
  			<div className="userInfo">
  			    <span className="username">{this.props.activeUser ? this.props.activeUser : "Welcome, Guest"}</span>
- 			    { !this.props.activeUser ? <Button onClick={this.signIn} classname="signinButton" bsStyle="primary">Sign in</Button> :
- 			    <Button onClick={this.signOut} classname="signoutButton" bsStyle="link">Sign out</Button> }
+ 			    { !this.props.activeUser ? <Button onClick={this.signIn} className="signinButton" bsStyle="primary">Sign in</Button> :
+ 			    <Button onClick={this.signOut} className="signoutButton" bsStyle="link">Sign out</Button> }
 
  			</div>
  		);
