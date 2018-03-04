@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {Button, FormGroup, InputGroup, FormControl, Row, Col} from 'react-bootstrap';
 import './RoomList.css';
+import { deleteRoom } from '../actions'
 
 class RoomList extends Component {
    constructor(props) {
      super(props);
+     this.store = this.props.store;
   
      this.state = { 
      	rooms: [],
@@ -82,10 +84,14 @@ class RoomList extends Component {
      
   }
 
-  deleteRoom = (room) => {
+  /*deleteRoom = (room) => {
   console.log("deleteroom triggered");
   const selectedRoom = room.key;
   this.roomsRef.child(selectedRoom).remove();
+  }*/
+
+  deleteRoom = (room) => {
+    this.store.dispatch(deleteRoom());
   }
 
   toggleEdit = (e, roomKey) => {

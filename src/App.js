@@ -28,6 +28,7 @@ class App extends Component {
       activeUser: "",
       messages: []
     }
+    this.store = this.props.store;
   }
 
   setActiveRoom(r) {
@@ -67,6 +68,7 @@ class App extends Component {
                 activeRoomName = {this.state.activeRoomName} 
                 setActiveRoom = {(r) => this.setActiveRoom(r)}
                 appMessages = {this.state.messages}
+                store = {this.store}
             />
             </Col>
             <Col sm={9} className="messages">
