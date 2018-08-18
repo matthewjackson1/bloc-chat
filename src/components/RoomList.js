@@ -6,7 +6,6 @@ import { deleteRoom } from '../actions'
 class RoomList extends Component {
    constructor(props) {
      super(props);
-     this.store = this.props.store;
   
      this.state = { 
      	rooms: [],
