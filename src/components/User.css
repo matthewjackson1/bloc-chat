@@ -1,9 +1,18 @@
-.userInfo {
- background-color:#333;
- color: white;
- padding: 5px 0px 5px 20px;
-}
-
+@font-face {
+	font-family: "sofia-pro-semibold"; 
+	src: url('../assets/fonts/SofiaProSemiBold.otf');
+  } 
+  
+  @font-face {
+	font-family: "sofia-pro-medium"; 
+	src: url('../assets/fonts/SofiaProMedium.otf');
+  } 
+   
+  
+  body {
+	  font-family: "sofia-pro-medium";
+   
+	}
 
 .signinButton {
 
@@ -11,4 +20,12 @@
 
 .username {
 	margin-right:10px;
+}
+
+.header-logo {
+	height: 50px;
+}
+
+.g-signin{
+	height: 46px;
 }

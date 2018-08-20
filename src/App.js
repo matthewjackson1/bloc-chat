@@ -52,7 +52,7 @@ class App extends Component {
   render() {
     return (
       <Grid className="App" fluid>
-          <Row>
+          <Row>         
             <User
                 firebase = {firebase}
                 setUser = {(user) => this.setUser(user)}

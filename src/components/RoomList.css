@@ -2,6 +2,10 @@
 	padding: 10px !important;
 }
 
+.chatroomList{
+	padding:20px;
+}
+
 .roomNames {
 	display:block;
 	font-size: 18px;
@@ -25,12 +29,8 @@
 	font-size: 32px;
 }
 
-.blocChatRooms {
-	display:block;
-	font-size: 24px;
-	margin-top:24px;
-	margin-bottom:10px;
-
+.roomNames{
+	flex-grow: 1;
 }
 
 
@@ -42,7 +42,7 @@
 	display:none;
 }
 
-.showMsg {]
+.showMsg {
 	display:block;
 }
 
