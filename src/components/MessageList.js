@@ -204,8 +204,7 @@ class MessageList extends Component {
                 { this.roomMessages() }
               </tbody>
               </Table>
-            </div>
-            <form className="newMsgForm" onSubmit={this.createMsg}>
+              <form className="newMsgForm bottom" onSubmit={this.createMsg}>
               <FormGroup bsSize="large">
                 <InputGroup> 
                   <FormControl className="msgEntry" type="text" id="message" placeholder="Write your message here..." onChange={this.handleChange} />
@@ -214,7 +213,9 @@ class MessageList extends Component {
                   </InputGroup.Button>
                 </InputGroup>
               </FormGroup>
-            </form>
+              </form>
+            </div>
+            
           </div>
           }
           </div>

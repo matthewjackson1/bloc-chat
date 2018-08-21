@@ -4,7 +4,7 @@ import MessageList from './components/MessageList';
 import User from './components/User';
 import './App.css';
 import * as firebase from 'firebase';
-import {Grid, Col, Row} from 'react-bootstrap';
+import {Grid, Col, Row, Button} from 'react-bootstrap';
 
 
 // Initialize Firebase
@@ -52,33 +52,62 @@ class App extends Component {
   render() {
     return (
       <Grid className="App" fluid>
-          <Row>         
-            <User
-                firebase = {firebase}
-                setUser = {(user) => this.setUser(user)}
-                activeUser = {this.state.activeUser}
-            />
-          </Row>
-          <Row>
-            <Col sm={3} className="rooms">
-            <RoomList
-                firebase = {firebase}
-                activeRoom = {this.state.activeRoom} 
-                activeRoomName = {this.state.activeRoomName} 
-                setActiveRoom = {(r) => this.setActiveRoom(r)}
-                appMessages = {this.state.messages}
-            />
-            </Col>
-            <Col sm={9} className="messages">
-            <MessageList 
-                firebase = {firebase} 
-                activeRoom = {this.state.activeRoom}
-                activeRoomName = {this.state.activeRoomName}
-                activeUser = {this.state.activeUser}
-                appMessages = {this.state.messages}
-                setMessages = {(messages) => this.setMessages(messages)}
-            />
-            </Col>
+      <Row>
+
+
+
+
+        <Col sm={4}>
+
+<div className="navbar navbar-expand-sm navbar-light">
+
+    <Col>
+        <a className="navbar-brand" href="/">
+          <img className="header-logo" src="../assets/branding/jabberLogo.png" />
+        </a>
+    
+        
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+    aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse flex-column" id="navbarResponsive">
+            
+          <User
+              firebase = {firebase}
+              setUser = {(user) => this.setUser(user)}
+              activeUser = {this.state.activeUser}
+          />
+      
+          <RoomList
+              firebase = {firebase}
+              activeRoom = {this.state.activeRoom} 
+              activeRoomName = {this.state.activeRoomName} 
+              setActiveRoom = {(r) => this.setActiveRoom(r)}
+              appMessages = {this.state.messages}
+          />
+             
+        </div>
+    </Col>
+</div>
+
+</Col>
+
+
+
+
+
+        <Col sm={8} className="messages">
+        <MessageList 
+            firebase = {firebase} 
+            activeRoom = {this.state.activeRoom}
+            activeRoomName = {this.state.activeRoomName}
+            activeUser = {this.state.activeUser}
+            appMessages = {this.state.messages}
+            setMessages = {(messages) => this.setMessages(messages)}
+        />
+        </Col>
           </Row>
       </Grid>
     );

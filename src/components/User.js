@@ -51,27 +51,12 @@ class User extends Component {
   render() {
   		console.log("rendering");
  		return( 
-			<div className="container-fluid">
- 			<div className="navbar navbar-expand-lg navbar-light">
-				
-					<a className="navbar-brand" href="/">
-						<img className="header-logo" src="../assets/branding/jabberLogo.png" />
-					</a>
-					<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
-				aria-expanded="false" aria-label="Toggle navigation">
-						<span className="navbar-toggler-icon"></span>
-					</button>
-					<div className="collapse navbar-collapse" id="navbarResponsive">
-						<div className="navbar-nav ml-auto" id="menu-links">
-							<div className="nav-item">
-								<span className="username">{this.props.activeUser ? this.props.activeUser : "Welcome, Guest"}</span>
-								{ !this.props.activeUser ? <Button onClick={this.signIn} className="signinButton"><img className="g-signin" src="../assets/images/btn_google_signin_dark_normal_web@2x.png"/></Button> :
-								<Button onClick={this.signOut} className="signoutButton" bsStyle="link">Sign out</Button> }
-							</div>    
-						</div>
-					</div>
-				</div>
- 			</div>
+			<div>
+				<span className="username">{this.props.activeUser ? this.props.activeUser : "Welcome, Guest"}</span>
+				{ !this.props.activeUser ? <Button onClick={this.signIn} className="signinButton"><img className="g-signin" src="../assets/images/btn_google_signin_dark_normal_web@2x.png"/></Button> :
+				<Button onClick={this.signOut} className="signoutButton" bsStyle="link">Sign out</Button> }
+			</div>    
+						
  		);
 
  	}
