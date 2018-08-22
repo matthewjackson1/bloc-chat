@@ -59,7 +59,7 @@ class App extends Component {
 
         <Col sm={4}>
 
-<div className="navbar navbar-expand-sm navbar-light">
+<div className="navbar navbar-expand-md navbar-light">
 
     <Col>
         <a className="navbar-brand" href="/">

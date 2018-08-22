@@ -103,7 +103,7 @@ class RoomList extends Component {
  	render() {
  		return(
 
-      <Col className="text-left chatroomList">
+      <Col className="text-left chatroomList navbar">
         <h2 className="blocChatRooms">Rooms</h2>
         <div>
        			{

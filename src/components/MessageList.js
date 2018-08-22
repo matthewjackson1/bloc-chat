@@ -195,10 +195,10 @@ class MessageList extends Component {
         <div>
           { this.props.activeRoom &&
           <div>
-            <div className="messageContainer">
-              <div className="messagesHeader">
+            <div className="messagesHeader">
                 <span className="roomName">{this.props.activeRoomName}</span>
               </div>
+            <div className="messageContainer">
            		<Table striped>
               <tbody>
                 { this.roomMessages() }

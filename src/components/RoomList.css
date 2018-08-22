@@ -1,10 +1,6 @@
-.rooms {
-	padding: 10px !important;
-}
 
-.chatroomList{
-	padding:20px;
-}
+
+
 
 .roomNames {
 	display:block;
@@ -58,6 +54,7 @@
 
 .roomRow {
 	padding: 5px 0 5px 0;
+	margin-left: 0px;
 }
 
 .roomButtons {

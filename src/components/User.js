@@ -52,7 +52,7 @@ class User extends Component {
   		console.log("rendering");
  		return( 
 			<div>
-				<span className="username">{this.props.activeUser ? this.props.activeUser : "Welcome, Guest"}</span>
+				<span className="username">{this.props.activeUser ? this.props.activeUser : "Welcome, Guest"}</span><br/>
 				{ !this.props.activeUser ? <Button onClick={this.signIn} className="signinButton"><img className="g-signin" src="../assets/images/btn_google_signin_dark_normal_web@2x.png"/></Button> :
 				<Button onClick={this.signOut} className="signoutButton" bsStyle="link">Sign out</Button> }
 			</div>    
