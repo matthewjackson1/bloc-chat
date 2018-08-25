@@ -103,7 +103,7 @@ class RoomList extends Component {
  	render() {
  		return(
 
-      <Col className="text-left chatroomList navbar">
+      <Col className="text-left chatroomList">
         <h2 className="blocChatRooms">Rooms</h2>
         <div>
        			{
@@ -129,7 +129,7 @@ class RoomList extends Component {
                         <InputGroup className="nameEntry"> 
                           <FormControl type="text" defaultValue={room.name} onChange={(e)=>this.handleEdit(e, room)} />
                           <InputGroup.Button>
-                            <Button className="nameSubmit" type="submit" bsSize="large">Update</Button>
+                            <Button className="nameSubmit" type="submit" bsSize="large" bsStyle="primary">Update</Button>
                           </InputGroup.Button>
                         </InputGroup>
                       </FormGroup>
@@ -148,7 +148,7 @@ class RoomList extends Component {
                       <InputGroup className="roomEntry"> 
                         <FormControl className="roomField" type="text" placeholder="" id="roomName" onChange={this.handleChange} />
                         <InputGroup.Button>
-                          <Button className="createRoom" type="submit" bsSize="large" >Add</Button>
+                          <Button className="createRoom" type="submit" bsStyle="primary">Create</Button>
                       </InputGroup.Button>
                       </InputGroup>
                     </FormGroup>

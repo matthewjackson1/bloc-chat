@@ -51,26 +51,26 @@ class App extends Component {
 
   render() {
     return (
-      <Grid className="App" fluid>
-      <Row>
+      <Grid className="App h-100" fluid>
+      <Row className="h-100">
 
 
 
 
-        <Col sm={4}>
+       
 
-<div className="navbar navbar-expand-md navbar-light">
-
-    <Col>
-        <a className="navbar-brand" href="/">
+<Col sm={4} className="navbar navbar-expand-md navbar-light sidebar align-items-start">
+        <Col sm={12}>
+        <Row className="brand-logo">
+        <a href="/">
           <img className="header-logo" src="../assets/branding/jabberLogo.png" />
         </a>
-    
-        
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
     aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
+        </Row>
+        
 
         <div className="collapse navbar-collapse flex-column" id="navbarResponsive">
             
@@ -89,9 +89,7 @@ class App extends Component {
           />
              
         </div>
-    </Col>
-</div>
-
+        </Col>
 </Col>
 
 

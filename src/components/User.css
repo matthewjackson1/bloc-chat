@@ -18,7 +18,9 @@
 
 }
 
-
+.login-block {
+	width: 100%;
+}
 
 .header-logo {
 	height: 50px;

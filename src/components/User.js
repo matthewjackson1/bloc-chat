@@ -51,9 +51,9 @@ class User extends Component {
   render() {
   		console.log("rendering");
  		return( 
-			<div>
+			<div className="login-block">
 				<span className="username">{this.props.activeUser ? this.props.activeUser : "Welcome, Guest"}</span><br/>
-				{ !this.props.activeUser ? <Button onClick={this.signIn} className="signinButton"><img className="g-signin" src="../assets/images/btn_google_signin_dark_normal_web@2x.png"/></Button> :
+				{ !this.props.activeUser ? <a onClick={this.signIn} className="signinButton"><img className="g-signin" src="../assets/images/btn_google_signin_dark_normal_web@2x.png"/></a> :
 				<Button onClick={this.signOut} className="signoutButton" bsStyle="link">Sign out</Button> }
 			</div>    
 						

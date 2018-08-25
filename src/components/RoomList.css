@@ -1,6 +1,8 @@
 
 
-
+.chatroomList{
+	width: 100%;
+}
 
 .roomNames {
 	display:block;
@@ -14,6 +16,11 @@
 
 .roomNames:first-child {
 
+}
+
+.login-block{
+	padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .nameEntry {
@@ -68,11 +75,22 @@
 }
 
 .activeRoomRow {
-	background-color: #d6d6d7;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#16befd+0,0071f3+100 */
+	background: rgb(22,190,253); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(22,190,253,1) 0%, rgba(0,113,243,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(22,190,253,1) 0%,rgba(0,113,243,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(22,190,253,1) 0%,rgba(0,113,243,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#16befd', endColorstr='#0071f3',GradientType=0 ); /* IE6-9 */
+	width: 100%;
+	color:white;
+}
+
+.activeRoomRow .roomMsgIcons {
+	color:white !important;	
 }
 
 .roomRow {
-	
+	width: 100%;
 }
 
 .newRoomForm {

@@ -3,12 +3,24 @@
 .messagesHeader {
 	position: fixed;
 	margin-top: 0 auto;
-	margin-bottom: 15px;
+	margin-bottom: 500px;
 	margin-left: 0 auto;
+	width: 100%;
+    background-color: white;
+    border-bottom: 1px solid black;
+    padding: 10px;
+}
+
+.new-msg-container{
+	
+}
+
+.messageContainer{
+	padding-top:65px;
 }
 
 .bottom {
-    position: fixed;
+    position: sticky;
     bottom: 0;
     margin-right: 0;
 }
